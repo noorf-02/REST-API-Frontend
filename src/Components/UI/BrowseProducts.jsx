@@ -16,8 +16,24 @@ export default function BrowseProducts() {
 
   return (
     <div className="wrapper">
-      <h1>Total Products</h1>
-      <div className="products"></div>
+      <h1 className="text-2xl font-medium">Total Products {value.length}</h1>
+
+
+      <div className="products">
+        {
+            value.map((myProduct)=>{
+                console.log(myProduct)
+
+                return (
+                    <div>
+                    <h1>{myProduct.ProductName}</h1>
+                    <p>{myProduct.ProductDescription}</p>
+                </div>
+                ) 
+
+            })
+        }
+      </div>
     </div>
   );
 }
