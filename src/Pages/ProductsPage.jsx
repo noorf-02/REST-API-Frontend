@@ -5,7 +5,6 @@ import Nav from "../Components/SHARED/Nav";
 export default function LandingPage() {
   return (
     <div>
-      <Nav />
       <BrowseProducts />
     </div>
   );
