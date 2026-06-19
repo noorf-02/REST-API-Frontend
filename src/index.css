@@ -2,6 +2,6 @@
 
 @layer components{
     .wrapper{ 
-        @apply w-[90%] mx-auto;
+        @apply w-[90%] mx-auto py-3.5;
     }
 }
