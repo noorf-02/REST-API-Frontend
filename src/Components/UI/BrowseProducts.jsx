@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "motion/react"
 
 const url = "http://localhost:5000/products";
 export default function BrowseProducts() {
@@ -23,7 +24,7 @@ export default function BrowseProducts() {
           console.log(myProduct);
 
           return (
-            <div className="card w-[350px] justify-center border-white rounded-3xl p-6 bg-white shadow-xl flex flex-col gap-2"> 
+            <motion.div initial={{opacity:0, x:-50}} whileInView={{opacity:1, x:0}} transition={{duration:0.5}} viewport={{once:true}} className="card w-[350px] justify-center border-white rounded-3xl p-6 bg-white shadow-xl flex flex-col gap-2"> 
               <img src={myProduct.Image} alt="" className="w-[150px] h-[150px] object-cover block m-auto rounded-3xl" />
               <h1 className="text-2xl font-medium">{myProduct.ProductName}</h1>
               <p>{myProduct.ProductDescription}</p>
@@ -31,7 +32,7 @@ export default function BrowseProducts() {
                 <p className="italic text-gray-500 text-[12px]">{myProduct.Category}</p>
                 <p className="py-1 px-3 rounded-[10px] bg-[#879a77] text-white">${myProduct.Price}</p>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
