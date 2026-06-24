@@ -18,21 +18,36 @@ export default function BrowseProducts() {
     getProducts();
   }, []);
 
-  function filtering(category) {
-    setCategory(category);
-    if (category === "all") {
+  function filtering(scategory) {
+    setCategory(scategory);
+    if (scategory === "all") {
       setValue(products);
     } else {
-      setValue(products.filter((p) => p.category === category));
+      setValue(products.filter((p) => p.Category === scategory));
     }
   }
 
   return (
     <div className="wrapper ">
       <div className="btns flex gap-2 my-3">
-        <button className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 " onClick={() => filtering("all")}>All</button>
-        <button className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 " onClick={() => filtering("fruits")}>Fruit</button>
-        <button className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 " onClick={() => filtering("makeup")}>MakeUp</button>
+        <button
+          className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 "
+          onClick={() => filtering("all")}
+        >
+          All
+        </button>
+        <button
+          className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 "
+          onClick={() => filtering("Fruit")}
+        >
+          Fruit
+        </button>
+        <button
+          className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 "
+          onClick={() => filtering("MakeUp")}
+        >
+          MakeUp
+        </button>
       </div>
 
       <h1 className="text-2xl font-medium">Total Products {value.length}</h1>
