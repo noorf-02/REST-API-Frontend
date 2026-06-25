@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { useTheme } from "../SHARED/Nav";
 
 const url = "http://localhost:5000/products";
 export default function BrowseProducts() {
+  const { btn} = useTheme(false);
   const [value, setValue] = useState([]);
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("all");
@@ -31,19 +33,19 @@ export default function BrowseProducts() {
     <div className="wrapper ">
       <div className="btns flex gap-2 my-3">
         <button
-          className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 "
+          className={`py-2 px-3 rounded-3xl w-fit font-medium text-white ${btn? '' : 'bg-[#879a77]'} ${btn? "hover:bg-[#3e352f]": "hover:bg-[#6c7d5e]"} transition-all duration-300 `}
           onClick={() => filtering("all")}
         >
           All
         </button>
         <button
-          className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 "
+          className={`py-2 px-3 rounded-3xl w-fit font-medium text-white ${btn? 'bg-[#554940]' : 'bg-[#879a77]'} {btn? "hover:bg-[#3e352f]": "hover:bg-[#6c7d5e]" transition-all duration-300 `}
           onClick={() => filtering("Fruit")}
         >
           Fruit
         </button>
         <button
-          className="py-2 px-3 rounded-3xl w-fit font-medium text-white bg-[#879a77] hover:bg-[#6c7d5e] transition-all duration-300 "
+          className={`py-2 px-3 rounded-3xl w-fit font-medium text-white ${btn? 'bg-[#554940]' : 'bg-[#879a77]'} {btn? "hover:bg-[#3e352f]": "hover:bg-[#6c7d5e]" transition-all duration-300 `}
           onClick={() => filtering("MakeUp")}
         >
           MakeUp
@@ -75,7 +77,7 @@ export default function BrowseProducts() {
                 <p className="italic text-gray-500 text-[12px]">
                   {myProduct.Category}
                 </p>
-                <p className="py-1 px-3 rounded-[10px] bg-[#879a77] text-white font-medium">
+                <p className={`py-1 px-3 rounded-[10px] ${btn? 'bg-[#554940]' : 'bg-[#879a77]'}] text-white font-medium`}>
                   ${myProduct.Price}
                 </p>
               </div>

@@ -1,9 +1,21 @@
 import React, { useState } from "react";
+import { createContext, useContext } from "react";
 
 export default function Nav() {
   //to add a toggle btn that changes the theme of your website u need to first create a button and then we will be using use state to store the inital of the button and then in the setbtn we will store how it will move to the right side and as the btn is toggled the theme of the website will change
 
-  const [btn, setBtn] = useState(false);
+  const themeContext = createContext();
+  
+  function themeProvider({children}){
+  const [btn, setBtn] = useTheme(false);
+
+  return (
+    <themeContext.Provider value={{ btn,setBtn }}>
+      {children}
+    </themeContext.Provider>
+  );
+
+  }
 
   return (
     <section className={`transition-all duration-300 ${btn? 'bg-[#554940]': 'bg-[#879a77]'} `}>
@@ -25,3 +37,9 @@ export default function Nav() {
     </section>
   );
 }
+
+
+export function useTheme(){
+  useContext(themeContext)
+}
+export function themeProvider();
